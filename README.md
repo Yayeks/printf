@@ -1,2 +1,3 @@
 # printf
-A group project
+This is a group project.
+The start of something great, I hope.
