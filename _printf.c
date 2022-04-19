@@ -2,14 +2,14 @@
 #include <stdio.h>
 /**
  * _printf - main function to print in console
- * @mar: array to print and check type
+ * @format: array to print and check type
  * Return: count of character printed
  */
-int _printf(const char *mar, ...)
+int _printf(const char *format, ...)
 {
 	int start = -1;
 
-	if (mar != NULL)
+	if (format != NULL)
 	{
 		int i;
 		va_list arg;
@@ -17,28 +17,28 @@ int _printf(const char *mar, ...)
 
 		va_start(arg, start);
 
-		if (mar[0] == '%' && mar[1] == '\0')
+		if (format[0] == '%' && format[1] == '\0')
 			return (-1);
 		start = 0;
 
-		for (i = 0; mar[i] != '\0'; i++)
+		for (i = 0; format[i] != '\0'; i++)
 		{
-			if (mar[i] == '%')
+			if (format[i] == '%')
 			{
-				if (mar[i + 1] == '%')
+				if (format[i + 1] == '%')
 				{
-					start += putchar(mar[i]);
+					start += putchar(format[i]);
 					i++;
 				}
-				else if (mar[i + 1] != '\0')
+				else if (format[i + 1] != '\0')
 				{
-					o = get_func(mar[i + 1]);
-					start += (o ? o(arg) : _putchar(mar[i]) + putchar(mar[i + 1]));
+					o = get_func(format[i + 1]);
+					start += (o ? o(arg) : _putchar(format[i]) + putchar(format[i + 1]));
 					i++;
 				}
 			}
 			else
-				start += putchar(mar[i]);
+				start += putchar(format[i]);
 		}
 		va_end(arg);
 	}
