@@ -19,7 +19,7 @@ int (*get_func(char m))(va_list)
 
 	for (i = 0; ops[i].c != NULL; i++)
 	{
-		if (*ops[i].c == s)
+		if (*ops[i].c == m)
 			return (ops[i].f);
 	}
 	return (NULL);
