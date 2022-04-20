@@ -27,18 +27,18 @@ int _printf(const char *format, ...)
 			{
 				if (format[i + 1] == '%')
 				{
-					start += putchar(format[i]);
+					start += _putchar(format[i]);
 					i++;
 				}
 				else if (format[i + 1] != '\0')
 				{
 					o = get_func(format[i + 1]);
-					start += (o ? o(arg) : putchar(format[i]) + putchar(format[i + 1]));
+					start += (o ? o(arg) : _putchar(format[i]) + _putchar(format[i + 1]));
 					i++;
 				}
 			}
 			else
-				start += putchar(format[i]);
+				start += _putchar(format[i]);
 		}
 		va_end(arg);
 	}
