@@ -12,10 +12,10 @@ int _printf(const char *format, ...)
 	if (format != NULL)
 	{
 		int i;
-		va_list arg;
+		va_list ar_list;
 		int (*o)(va_list);
 
-		va_start(arg, start);
+		va_start(ar_list, start);
 
 		if (format[0] == '%' && format[1] == '\0')
 			return (-1);
@@ -33,14 +33,14 @@ int _printf(const char *format, ...)
 				else if (format[i + 1] != '\0')
 				{
 					o = get_func(format[i + 1]);
-					start += (o ? o(arg) : _putchar(format[i]) + _putchar(format[i + 1]));
+					start += (o ? o(ar_list) : _putchar(format[i]) + _putchar(format[i + 1]));
 					i++;
 				}
 			}
 			else
 				start += _putchar(format[i]);
 		}
-		va_end(arg);
+		va_end(ar_list);
 	}
 	return (start);
 }
